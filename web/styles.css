@@ -1,0 +1,54 @@
+/* Used to display and hide the the contents specific to device */
+@font-face {
+    font-family: 'LinuxLibertineORegular';
+    src: url('linlibertine_re-4.7.5ro-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LinuxLibertineOBold';
+    src: url('linlibertine_bd-4.1.5ro-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+* {
+font-family: 'LinuxLibertineORegular', Arial, sans-serif;
+}
+
+h3 {
+font-family: 'LinuxLibertineOBold', Arial, sans-serif;
+font-variant:small-caps;
+}
+
+
+.defaultcontent
+{ display: block; }
+
+/* Hide mobi specific content for other device */
+.mobicontent
+{ display: none; }
+
+.enddiv {
+page-break-after:always;
+}
+
+h1 {
+text-align:center;
+font: 60px/68px 'LinuxLibertineORegular', Arial, sans-serif;
+letter-spacing: 0;
+}
+
+.versenum {
+    display: inline-block;
+    float: left;
+    vertical-align: super;
+    font-size: 50%;
+}
+
+
+
+
+

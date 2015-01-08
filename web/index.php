@@ -29,18 +29,36 @@ $references = explode(",",$_GET['b']);
 
 
 ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<?php if ($_GET['k'] == 1) { ?> 
+<head>
+<title><?php print $_GET['date']; ?></title>
+<link type="text/css" href="styles.css" rel="Stylesheet"/>
+<link type="text/css" href="kf8.css" media="amzn-kf8" rel="Stylesheet"/>
+<link type="text/css" href="mobi.css" media="amzn-mobi" rel="Stylesheet"/>
+</head>
+<body>
+	<h1><?php print $_GET['date']; ?></h1>
+<?php } else { ?>
 <html>
 <head>
 <title>Bible Search</title>
+<link type="text/css" href="styles.css" rel="Stylesheet"/>
 </head>
 <body>
+	<?php }
+	if ($_GET['h'] == 1 || $_GET['k'] == 1) { } else { ?>
 <header>
+	
 <form action="index.php" action="GET">
 <!-- TODO: Bible dropdown. Defaults to KJV. -->
 <label for="b">Reference(s): </label><input type="text" name="b" value="<?php if ($_GET['b']) { echo $_GET['b']; } else { echo $default_text; } ?>" /><input type="submit" value="Search" /><br />
 
 </form>
+
 </header>
+<?php } ?>
 <main>
 	<?php 
 	//return results
@@ -59,10 +77,11 @@ $references = explode(",",$_GET['b']);
 			//$row = $result->fetch_array(MYSQLI_NUM);
 			//0: ID 1: Book# 2:Chapter 3:Verse 4:Text
 			
-			print "<article><header><h1>{$ret->getBook()} {$ret->getChapter()}</h1></header>";
+			print "<article><header><h3>{$ret->getBook()} {$ret->getChapter()}</h3></header>";
 			
             while ($row = $result->fetch_row()) {
-			 print "<div class=\"versenum\">${row[3]}</div> <div class=\"versetext\">${row[4]}</div><br />";
+			 print "<div class=\"versenum\">${row[3]}</div> <div class=\"versetext\">${row[4]}</div>";
+			 if ($_GET['k'] == 1) { print "<div class=\"clear\"></div>"; } else { print "<br />"; }
 			}
 			print "</article>";
 			
@@ -76,13 +95,17 @@ $references = explode(",",$_GET['b']);
 
 	?>
 </main>
+	<?php if ($_GET['h'] == 1 || $_GET['k'] == 1) { print "<div class=\"enddiv\"></div>"; } else { ?>
 <footer>
+
 <form action="index.php" action="GET">
 <!-- TODO: Bible dropdown. Defaults to KJV. -->
-<label for="b">Reference(s): </label><input type="text" name="b" value="<?php if ($_GET['b']) { echo $_GET['b']; } else { echo "John 3:16"; } ?>" /><input type="submit" value="Search" /><br />
+<label for="b">Reference(s): </label><input type="text" name="b" value="<?php if ($_GET['b']) { echo $_GET['b']; } else { echo $default_text; } ?>" /><input type="submit" value="Search" /><br />
 
 </form>
+
 </footer>
+<?php } ?>
 </body>
 </html>
 <?php $mysqli->close(); ?>
