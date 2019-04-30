@@ -1,3 +1,5 @@
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=W8RKPHPUF398G)
+
 Bible Versions and Cross-Reference Databases: mysql, sqlite, xml, csv, json.
 ===============
 
@@ -13,10 +15,18 @@ Here you will find the following bible versions in sql, sqlite, xml, csv, and js
 
 All included Bible translations are in the public domain. 
 
-Also find a **Master SQL and SQLite file** (top level) containing all tables.
-
-
 *Please let me know if any verses/text were inaccurately transferred in conversion.*
+
+Looking for deuterocanonical / apocryphal books? Find them here: https://github.com/scrollmapper/bible_databases_deuterocanonical
+
+Summary:
+-------------------
+
+- *bible-mysql.sql* (MySQL) is the main database and most feature-oriented due to contributions from developers. It is suggested you use that for most things, or at least convert the information from it.
+- *cross_references-mysql.sql* (MySQL) is the cross-reference table. It has been separated to become an optional feature. This is converted from the project at http://www.openbible.info/labs/cross-references/.
+- *bible-sqlite.db* (SQLite) is a basic simplified database for simpler applications (includes cross-references too).
+- *cross_references.txt* is the source cross-reference file obtained from http://www.openbible.info/labs/cross-references/
+
 
 Verse ID System:
 -------------------
@@ -52,7 +62,7 @@ While its expected that your programs would use the verse-id system, *book #, ch
 
 A Valuable Cross-Reference Table
 -------------------
-A very special and valuable addition to these databases is the extensive cross-reference table. Its combined from trustworthy sources. Its extremely useful in bible study for discovering related scriptures. For any given verse, you simply query ***vid*** (verse id), and a list of rows will be returned. Each of those rows has a rank (r) for relevance, start-verse (sv), and end verse (ev) if there is one. 
+A very special and valuable addition to these databases is the extensive cross-reference table. It was created from the project at http://www.openbible.info/labs/cross-references/. See .txt version included from http://www.openbible.info website. Its extremely useful in bible study for discovering related scriptures. For any given verse, you simply query ***vid*** (verse id), and a list of rows will be returned. Each of those rows has a rank (r) for relevance, start-verse (sv), and end verse (ev) if there is one. 
 
 Basic Web Interaction
 -------------------
